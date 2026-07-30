@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Econométrico | Informalidad Laboral</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans p-6">
+    <div class="max-w-6xl mx-auto space-y-8">
+        <!-- Encabezado -->
+        <header class="border-b border-slate-700 pb-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold text-blue-400">Determinantes de la Informalidad Laboral en Ecuador</h1>
+                <p class="text-slate-400 mt-2">Modelo Econométrico Probit y Logit | Datos ENEMDU-INEC</p>
+                <p class="text-sm text-slate-500">Autor: Camilo Pacheco</p>
+            </div>
+            <div class="mt-4 md:mt-0 flex gap-3">
+                <a href="https://github.com/sh329621-max/Proyecto_econometria_Camilo_Pacheco" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Ver GitHub</a>
+            </div>
+        </header>
+
+        <!-- Tarjetas de Métricas -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                <p class="text-slate-400 text-sm">Modelo Seleccionado</p>
+                <p class="text-2xl font-bold text-emerald-400">Probit</p>
+            </div>
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                <p class="text-slate-400 text-sm">Criterio AIC</p>
+                <p class="text-2xl font-bold text-blue-400">1553.09</p>
+            </div>
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                <p class="text-slate-400 text-sm">Capacidad Discriminativa (ROC-AUC)</p>
+                <p class="text-2xl font-bold text-purple-400">0.715</p>
+            </div>
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                <p class="text-slate-400 text-sm">Muestra Analizada</p>
+                <p class="text-2xl font-bold text-amber-400">1,500 obs.</p>
+            </div>
+        </section>
+
+        <!-- Efectos Marginales -->
+        <section class="bg-slate-800 p-6 rounded-xl border border-slate-700">
+            <h2 class="text-xl font-bold text-slate-200 mb-4">Efectos Marginales Promedio (Modelo Probit)</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-slate-300">
+                    <thead class="bg-slate-700 text-slate-200 uppercase text-xs">
+                        <tr>
+                            <th class="p-3">Variable</th>
+                            <th class="p-3">Efecto Marginal (dY/dX)</th>
+                            <th class="p-3">Error Estándar</th>
+                            <th class="p-3">Valor p</th>
+                            <th class="p-3">Impacto Económico</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700">
+                        <tr>
+                            <td class="p-3 font-semibold">Años de Estudio</td>
+                            <td class="p-3 text-emerald-400">-0.0521</td>
+                            <td class="p-3">0.0061</td>
+                            <td class="p-3">&lt; 0.001 ***</td>
+                            <td class="p-3">Reducción del 5.2% en probabilidad de informalidad por año adicional.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold">Zona Urbana</td>
+                            <td class="p-3 text-emerald-400">-0.1834</td>
+                            <td class="p-3">0.0245</td>
+                            <td class="p-3">&lt; 0.001 ***</td>
+                            <td class="p-3">Residir en área urbana reduce la informalidad en 18.3%.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold">Sexo (Mujer)</td>
+                            <td class="p-3 text-red-400">+0.1245</td>
+                            <td class="p-3">0.0231</td>
+                            <td class="p-3">&lt; 0.001 ***</td>
+                            <td class="p-3">Ser mujer incrementa en 12.5% la probabilidad de empleo informal.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <footer class="bg-slate-800 p-6 rounded-xl border border-slate-700 text-slate-300 text-sm">
+            <h3 class="font-bold text-white mb-2">Conclusiones Econométricas Principales:</h3>
+            <p>La educación superior y la residencia urbana actúan como los principales factores protectores contra la informalidad en el mercado laboral ecuatoriano. Se identifican brechas estructurales de género significativas que requieren políticas públicas focalizadas.</p>
+        </footer>
+    </div>
+</body>
+</html>
