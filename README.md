@@ -6,7 +6,7 @@
 
 ---
 
-🌐 **Dashboard Web en Vivo:** [Ver Dashboard Interactivo](https://proyecto-econometria-camilo-pacheco.vercel.app)
+🌐 **Dashboard Web en Vivo:** [Ver Dashboard Interactivo] (https://proyecto-econometria-camilo-pacheco-drab.vercel.app/)
 
 ## 📌 1. Descripción del Problema
 El empleo informal constituye uno de los principales retos estructurales del mercado laboral ecuatoriano. Este proyecto analiza cómo influyen factores socioeconómicos clave (educación, edad, sexo, área de residencia y estado civil) en la probabilidad de que un trabajador pertenezca al sector informal.
