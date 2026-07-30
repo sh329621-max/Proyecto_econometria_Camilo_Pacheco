@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Determinantes Socioeconómicos del Empleo Informal en Ecuador</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm 18mm;
+        }
+        body {
+            font-family: 'Times New Roman', Times, Georgia, serif;
+            font-size: 10.5pt;
+            line-height: 1.5;
+            color: #1e293b;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 10px;
+        }
+        .paper-header {
+            text-align: center;
+            border-bottom: 2px solid #0f172a;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .journal-tag {
+            font-family: Arial, sans-serif;
+            font-size: 8.5pt;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #475569;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .paper-title {
+            font-size: 17pt;
+            font-weight: bold;
+            color: #0f172a;
+            margin: 5px 0 12px 0;
+            line-height: 1.25;
+        }
+        .author-info {
+            font-size: 9.5pt;
+            color: #334155;
+            font-style: italic;
+        }
+        .author-name {
+            font-weight: bold;
+            font-style: normal;
+            color: #0f172a;
+        }
+        .abstract-container {
+            background-color: #f1f5f9;
+            border-left: 4px solid #1e3a8a;
+            padding: 12px 15px;
+            margin-bottom: 22px;
+            font-size: 9.5pt;
+        }
+        .abstract-title {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 8.5pt;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+        }
+        h2 {
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+            font-weight: bold;
+            color: #1e3a8a;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 3px;
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+        h3 {
+            font-family: Arial, sans-serif;
+            font-size: 10.5pt;
+            font-weight: bold;
+            color: #334155;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+        .equation-block {
+            text-align: center;
+            margin: 12px 0;
+            font-size: 10.5pt;
+            background-color: #f8fafc;
+            padding: 8px;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9pt;
+            margin: 12px 0;
+        }
+        th {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            text-align: center;
+            padding: 6px 8px;
+            border: 1px solid #1e3a8a;
+        }
+        td {
+            padding: 5px 8px;
+            border: 1px solid #cbd5e1;
+            text-align: center;
+        }
+        .text-left { text-align: left; }
+        .callout-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 4px;
+            padding: 10px 14px;
+            margin: 14px 0;
+        }
+        .references {
+            font-size: 8.5pt;
+            margin-top: 20px;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="paper-header">
+        <div class="journal-tag">Proyecto de Investigación Econométrica Aplicada — Julio 2026</div>
+        <div class="paper-title">Determinantes Socioeconómicos del Empleo Informal en Ecuador: Un Análisis Econométrico Comparativo (Logit vs. Probit)</div>
+        <div class="author-info">
+            <span class="author-name">Camilo Pacheco</span><br>
+            Facultad de Ciencias Económicas y Administrativas | Microdatos ENEMDU - INEC<br>
+            <b>Dashboard Web:</b> https://proyecto-econometria-camilo-pacheco.vercel.app
+        </div>
+    </div>
+
+    <div class="abstract-container">
+        <div class="abstract-title">Resumen Ejecutivo</div>
+        El presente trabajo examina los factores socioeconómicos que condicionan la probabilidad de pertenecer al sector informal en el mercado laboral ecuatoriano. Utilizando una muestra representativa de 1.500 observaciones de la ENEMDU (INEC), se estiman y comparan dos modelos de elección binaria: Logit y Probit. Los resultados muestran que los años de escolaridad y la residencia urbana actúan como sólidos factores protectores frente a la informalidad, reduciendo la probabilidad en 5.2% y 18.3% respectivamente. Por el contrario, ser mujer incrementa la probabilidad de informalidad en 12.5 puntos porcentuales. La evaluación mediante el Criterio de Akaike (AIC: 1551.92) y área bajo la curva ROC (0.716) confirma un ajuste econométrico muy robusto.
+    </div>
+
+    <h2>1. Introducción y Justificación Teórica</h2>
+    <p>El empleo informal afecta a más del 50% de la Población Económicamente Activa (PEA) en Ecuador, caracterizado por la ausencia de afiliación a la seguridad social y precariedad laboral. Desde la <i>Teoría del Capital Humano</i> (Mincer, 1974), la escolaridad e inversión educativa incrementan la productividad individual, facilitando el acceso al empleo formal regulado.</p>
+
+    <h2>2. Datos y Estadística Descriptiva</h2>
+    <table>
+        <thead>
+            <tr>
+                <th class="text-left">Variable</th>
+                <th class="text-left">Descripción</th>
+                <th>Tipo</th>
+                <th>Media</th>
+                <th>Desv. Est.</th>
+                <th>Mín</th>
+                <th>Máx</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td class="text-left"><b>informal (Y)</b></td><td class="text-left">Condición de informalidad (1 = Sí)</td><td>Binaria</td><td>0.524</td><td>0.499</td><td>0</td><td>1</td></tr>
+            <tr><td class="text-left"><b>anios_estudio</b></td><td class="text-left">Años de escolaridad acumulados</td><td>Continua</td><td>10.420</td><td>4.150</td><td>0</td><td>18</td></tr>
+            <tr><td class="text-left"><b>edad</b></td><td class="text-left">Edad del trabajador (18 a 65)</td><td>Continua</td><td>39.850</td><td>12.310</td><td>18</td><td>65</td></tr>
+            <tr><td class="text-left"><b>sexo</b></td><td class="text-left">Género (1 = Mujer, 0 = Hombre)</td><td>Binaria</td><td>0.468</td><td>0.499</td><td>0</td><td>1</td></tr>
+            <tr><td class="text-left"><b>area</b></td><td class="text-left">Área (1 = Urbana, 0 = Rural)</td><td>Binaria</td><td>0.612</td><td>0.487</td><td>0</td><td>1</td></tr>
+            <tr><td class="text-left"><b>casado</b></td><td class="text-left">Estado civil (1 = Casado/Unión libre)</td><td>Binaria</td><td>0.554</td><td>0.497</td><td>0</td><td>1</td></tr>
+        </tbody>
+    </table>
+
+    <h2>3. Resultados de Estimación y Efectos Marginales (AME)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th class="text-left">Variable</th>
+                <th>Coef. Logit</th>
+                <th>Efecto Marginal Logit (AME)</th>
+                <th>Coef. Probit</th>
+                <th>Efecto Marginal Probit (AME)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td class="text-left"><b>Constante</b></td><td>1.248***</td><td>—</td><td>0.762***</td><td>—</td></tr>
+            <tr><td class="text-left"><b>anios_estudio</b></td><td>-0.211***</td><td><b>-5.21%</b> (-0.0521)</td><td>-0.129***</td><td><b>-5.18%</b> (-0.0518)</td></tr>
+            <tr><td class="text-left"><b>edad</b></td><td>-0.008**</td><td><b>-0.20%</b> (-0.0020)</td><td>-0.005**</td><td><b>-0.19%</b> (-0.0019)</td></tr>
+            <tr><td class="text-left"><b>sexo (Mujer)</b></td><td>0.504***</td><td><b>+12.45%</b> (+0.1245)</td><td>0.311***</td><td><b>+12.51%</b> (+0.1251)</td></tr>
+            <tr><td class="text-left"><b>area (Urbana)</b></td><td>-0.742***</td><td><b>-18.34%</b> (-0.1834)</td><td>-0.458***</td><td><b>-18.39%</b> (-0.1839)</td></tr>
+            <tr><td class="text-left"><b>casado</b></td><td>-0.185*</td><td><b>-4.57%</b> (-0.0457)</td><td>-0.114*</td><td><b>-4.59%</b> (-0.0459)</td></tr>
+        </tbody>
+    </table>
+
+    <h2>4. Diagnóstico Econométrico</h2>
+    <table>
+        <thead>
+            <tr>
+                <th class="text-left">Métrica de Evaluación</th>
+                <th>Modelo LOGIT</th>
+                <th>Modelo PROBIT</th>
+                <th>Resultado / Criterio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td class="text-left">AIC (Akaike Information Criterion)</td><td><b>1551.92</b></td><td>1553.09</td><td><b>Logit Preferido (Menor AIC)</b></td></tr>
+            <tr><td class="text-left">Log-Likelihood</td><td>-769.96</td><td>-770.54</td><td>Ajustes muy cercanos</td></tr>
+            <tr><td class="text-left">Área Bajo la Curva ROC (AUC-ROC)</td><td><b>0.7161</b></td><td>0.7159</td><td>Buena capacidad discriminatoria (> 0.70)</td></tr>
+        </tbody>
+    </table>
+
+    <div class="callout-box">
+        <b>Conclusión de Política Pública:</b> Cada año adicional de educación reduce el riesgo de informalidad en 5.2%. Residir en zona urbana lo reduce en 18.3%, mientras que ser mujer incrementa la probabilidad de informalidad laboral en 12.5%, demostrando la necesidad de programas de formalización rural y redes públicas de cuidado infantil.
+    </div>
+
+    <div class="references">
+        <h2>Referencias</h2>
+        <p>Gujarati, D. N., & Porter, D. C. (2010). <i>Econometría</i> (5ta ed.). McGraw-Hill.</p>
+        <p>INEC. (2023). <i>Encuesta Nacional de Empleo, Desempleo y Subempleo (ENEMDU)</i>.</p>
+        <p>Mincer, J. (1974). <i>Schooling, Experience, and Earnings</i>. NBER.</p>
+    </div>
+</body>
+</html>
